@@ -7,7 +7,7 @@ export function activate(context: vscode.ExtensionContext) {
         color: new vscode.ThemeColor('editor.background'),
     });
 
-    const toggleStealthMode = vscode.commands.registerCommand('stealthtyper.toggleStealthTyping', () => {
+    const toggleStealthMode = vscode.commands.registerCommand('stealth-typer.toggleStealthTyping', () => {
         isStealthMode = !isStealthMode;
         updateDecoration();
     });

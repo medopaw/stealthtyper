@@ -1,7 +1,7 @@
 {
   "name": "stealth-typer",
   "displayName": "Stealth Typer",
-  "description": "Make text invisible so that You can type comfortably in public places without worrying about someone peeking at your screen.",
+  "description": "Make text invisible so that you can type comfortably in public places without worrying about someone peeking at your screen.",
   "version": "0.0.1",
   "publisher": "Med0paW",
   "license": "MIT",
@@ -24,7 +24,7 @@
   "contributes": {
     "commands": [
       {
-          "command": "stealthTyper.toggleStealthTyping",
+          "command": "stealth-typer.toggleStealthTyping",
           "title": "Toggle Stealth Typing"
       }
     ]

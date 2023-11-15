@@ -6,4 +6,4 @@ Select all in the editor if you want to see the content for yourself.
 
 ![Demo](demo.gif)
 
-When turning Stealth Typing on, it's recommended to also turn Highlight Current Line on and Spell Check off to get best experience.
+When turning Stealth Typing on, it's recommended to also turn Highlight Current Line on and Spell Check off to get the best experience.

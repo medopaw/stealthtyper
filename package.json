@@ -1,7 +1,7 @@
 {
   "name": "stealthtyper",
-  "displayName": "StealthTyper",
-  "description": "You can type invisible text into editor, so that those who peeks at your screen won't see any content..",
+  "displayName": "Stealth Typer",
+  "description": "Make text invisible so that You can type comfortably in public places without worrying about someone peeking at your screen.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.84.0"
@@ -15,7 +15,7 @@
     "commands": [
       {
           "command": "stealthtyper.toggleStealthTyping",
-          "title": "Toggle stealth typing"
+          "title": "Toggle Stealth Typing"
       }
     ]
   },

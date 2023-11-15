@@ -1,26 +1,36 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+    let isStealthMode = false;
+    const stealthModeDecoration = vscode.window.createTextEditorDecorationType({
+        // 使文本颜色与背景颜色相同
+        color: new vscode.ThemeColor('editor.background'),
+    });
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "stealthtyper" is now active!');
+    const toggleStealthMode = vscode.commands.registerCommand('stealthtyper.toggleStealthTyping', () => {
+        isStealthMode = !isStealthMode;
+        updateDecoration();
+    });
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('stealthtyper.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from StealthTyper!');
-	});
+    context.subscriptions.push(toggleStealthMode);
 
-	context.subscriptions.push(disposable);
+    function updateDecoration() {
+        for (const editor of vscode.window.visibleTextEditors) {
+            const ranges = editor.document.getText()
+                .split('\n')
+                .map((line, i) => editor.document.lineAt(i).range);
+
+            editor.setDecorations(stealthModeDecoration, isStealthMode ? ranges : []);
+        }
+    }
+
+    // 当编辑器内容或活动编辑器发生变化时，更新装饰
+    vscode.workspace.onDidChangeTextDocument(event => {
+        if (vscode.window.activeTextEditor && event.document === vscode.window.activeTextEditor.document) {
+            updateDecoration();
+        }
+    });
+    vscode.window.onDidChangeActiveTextEditor(updateDecoration);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}

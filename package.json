@@ -1,8 +1,18 @@
 {
-  "name": "stealthtyper",
+  "name": "stealth-typer",
   "displayName": "Stealth Typer",
   "description": "Make text invisible so that You can type comfortably in public places without worrying about someone peeking at your screen.",
   "version": "0.0.1",
+  "publisher": "Med0paW",
+  "license": "MIT",
+  "author": "Med0paW <medopaw@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medopaw/stealth-typer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/medopaw/stealth-typer-vscode/issues"
+  },
   "engines": {
     "vscode": "^1.84.0"
   },
@@ -14,7 +24,7 @@
   "contributes": {
     "commands": [
       {
-          "command": "stealthtyper.toggleStealthTyping",
+          "command": "stealthTyper.toggleStealthTyping",
           "title": "Toggle Stealth Typing"
       }
     ]

@@ -1,9 +1,9 @@
-Stealth Typer is a VSCode Extension that hide your text in the editor by setting the text color to background color, so that you Make text invisible so that You can type comfortably in public places without worrying about someone peeking at your screen.
+Stealth Typer is a VSCode Extension designed to hide your text in the editor by setting the text color to match the background color. This makes the text invisible, allowing you to type comfortably in public places without worrying about someone peeking at your screen.
 
-Press `Cmd+Shift+P` to open Command Palette and type to run "Toggle Stealth Typing" command. You can also bind a custom keyboard shortcut to it.
+To use Stealth Typer, press `Cmd+Shift+P` to open the Command Palette, then type and run the "Toggle Stealth Typing" command. You can also bind this function to a custom keyboard shortcut for convenience.
 
-Select all in the editor if you want to see the content for yourself.
+If you want to view the content you've typed, simply select all in the editor.
 
 ![Demo](demo.gif)
 
-When turning Stealth Typing on, it's recommended to also turn Highlight Current Line on and Spell Check off to get the best experience.
+To optimize your Stealth Typing experience, we recommend turning on the 'Highlight Current Line' feature and turning off 'Spell Check' when Stealth Typing is active.

@@ -1,8 +1,8 @@
 {
   "name": "stealth-typer",
   "displayName": "Stealth Typer",
-  "description": "Make text invisible so that you can type comfortably in public places without worrying about someone peeking at your screen.",
-  "version": "0.0.5",
+  "description": "Make text invisible and hide everything in editor so that you can type comfortably in public places without worrying about someone peeking at your screen.",
+  "version": "0.0.6",
   "publisher": "Med0paW",
   "icon": "images/logo.png",
   "license": "MIT",

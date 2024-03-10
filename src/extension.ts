@@ -9,29 +9,28 @@ const stealthModeDecoration = vscode.window.createTextEditorDecorationType({
 });
 
 export function activate(context: vscode.ExtensionContext) {
-    const toggleStealthTyping = vscode.commands.registerCommand('stealth-typer.toggleStealthTyping', () => {
-        isStealthMode = !isStealthMode;
-        updateDecoration();
-        setupIdleTimer();
-    });
-    context.subscriptions.push(toggleStealthTyping);
-
     setupIdleTimer();
-    // 监听设置项变化
-    vscode.workspace.onDidChangeConfiguration(event => {
-        if (event.affectsConfiguration('stealth-typer.autoStealthIdleSeconds')) {
-            setupIdleTimer(); // 重新设置定时器
-        }
-    }, null, context.subscriptions);
 
-    // 当编辑器内容或活动编辑器发生变化时，更新装饰
-    vscode.workspace.onDidChangeTextDocument(event => {
-        if (vscode.window.activeTextEditor && event.document === vscode.window.activeTextEditor.document) {
+    context.subscriptions.push(
+        vscode.commands.registerCommand('stealth-typer.toggleStealthTyping', () => {
+            isStealthMode = !isStealthMode;
             updateDecoration();
             setupIdleTimer();
-        }
-    });
-    vscode.window.onDidChangeActiveTextEditor(updateDecoration);
+        }),
+        vscode.workspace.onDidChangeConfiguration(event => { // 监听设置项变化
+            if (event.affectsConfiguration('stealth-typer.autoStealthIdleSeconds')) {
+                setupIdleTimer(); // 重新设置定时器
+            }
+        }),
+        vscode.workspace.onDidChangeTextDocument(event => { // 当编辑器内容或活动编辑器发生变化时，更新装饰
+            if (vscode.window.activeTextEditor && event.document === vscode.window.activeTextEditor.document) {
+                updateDecoration();
+                setupIdleTimer();
+            }
+        }),
+        vscode.window.onDidChangeActiveTextEditor(updateDecoration), // 编辑器切换时，要更新装饰
+        vscode.window.onDidChangeTextEditorSelection(setupIdleTimer) // 光标移动时，要重置 timer，否则移动光标不会被视为活动
+    );
 }
 
 export function deactivate() {
@@ -46,7 +45,6 @@ function setupIdleTimer() {
     const idleSeconds = config.get('autoStealthIdleSeconds', 0);
 
     if (idleSeconds > 0) {
-        console.log(`idleSeconds: ${idleSeconds}`);
         timeoutHandle = setTimeout(() => {
             if (isStealthMode) {
                 clearIdleTimer();

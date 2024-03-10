@@ -12,7 +12,7 @@ To optimize your Stealth Typing experience, we recommend turning on the 'Highlig
 
 A new feature has been added to enhance security when you forget to enable stealth typing or lock your screen. The `autoStealthIdleSeconds` configuration option allows the extension to automatically enable stealth mode after a certain period of inactivity.
 
-If `autoStealthIdleSeconds` is set to a positive number, the extension will automatically enable stealth mode after that many seconds of inactivity. For example, if `autoStealthIdleSeconds` is set to 60, the extension will enable stealth mode if no input is detected for 60 seconds.
+If `autoStealthIdleSeconds` is set to a positive number, the extension will automatically enable stealth mode after that many seconds of inactivity. This inactivity timer is reset whenever you change the content of the editor, switch the active editor, move the cursor, or change the text selection. For example, if `autoStealthIdleSeconds` is set to 60, the extension will enable stealth mode if no such activity is detected for 60 seconds.
 
 By default, `autoStealthIdleSeconds` is set to 0, which means the extension will not automatically enable stealth mode. You must manually toggle stealth mode using the `stealth-typer.toggleStealthTyping` command.
 

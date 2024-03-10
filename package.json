@@ -15,20 +15,32 @@
     "url": "https://github.com/medopaw/stealth-typer-vscode/issues"
   },
   "engines": {
-    "vscode": "^1.84.0"
+    "vscode": "^1.87.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-          "command": "stealth-typer.toggleStealthTyping",
-          "title": "Toggle Stealth Typing"
+        "command": "stealth-typer.toggleStealthTyping",
+        "title": "Toggle Stealth Typing"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Stealth Typer",
+      "properties": {
+        "stealth-typer.autoStealthIdleSeconds": {
+          "type": "number",
+          "default": 0,
+          "description": "Enable stealth typing after the editor has been idle for the specified number of seconds. A value of 0 or negative disables this feature."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -39,15 +51,15 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.84.0",
     "@types/mocha": "^10.0.3",
     "@types/node": "18.x",
+    "@types/vscode": "^1.87.0",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
+    "@vscode/test-electron": "^2.3.6",
     "eslint": "^8.52.0",
     "glob": "^10.3.10",
     "mocha": "^10.2.0",
-    "typescript": "^5.2.2",
-    "@vscode/test-electron": "^2.3.6"
+    "typescript": "^5.2.2"
   }
 }
